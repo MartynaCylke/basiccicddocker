@@ -43,7 +43,7 @@ jobs:
       - name: Verify deployment
         run: |
           sleep 120  # czekaj na start aplikacji
-          STAGING_URL="https://wg-dev-webapp-staging.azurewebsites.net/"
+          STAGING_URL="https://myprojectmc-dev-webapp.azurewebsites.net/"
           response=$(curl $STAGING_URL)
           if [[ $response != *"tired"* ]]; then
             echo "Something is wrong with the staging app."
@@ -59,7 +59,7 @@ jobs:
         uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
-          approvers: ${{ github.actor }}
+          approvers: wguzik
           minimum-approvals: 1
 
       - name: Login to Azure
