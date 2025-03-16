@@ -33,7 +33,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_REPOSITORY_NAME }}:${{ env.SHA }}-${{ env.DATE }}
-                - name: Trigger deployment workflow
+      - name: Trigger deployment workflow
         if: success() && github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: actions/github-script@v6
         with:
